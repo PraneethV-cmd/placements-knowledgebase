@@ -27,7 +27,7 @@ def register():
 
         if error is None:
             try:
-                new_user = User(username, generate_password_hash(password))
+                new_user = Administrator(username, generate_password_hash(password))
                 db_session.add(new_user)
                 # db_session.execute(text(
                 #         "INSERT INTO user (username, password) VALUES (?, ?)"),
@@ -63,7 +63,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('index'))
+            return redirect(url_for('dashboard.profile'))
 
         flash(error)
 
