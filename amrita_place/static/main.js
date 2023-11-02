@@ -101,7 +101,7 @@ var options = {
         enabled: false
     },
     tooltip: {
-        theme: 'light'
+        theme: 'dark'
     }
 };
 
