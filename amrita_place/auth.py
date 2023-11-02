@@ -55,7 +55,7 @@ def login():
         #         ).fetchone()
         try:
             user = db_session.execute(select(Administrator).filter_by(username=username)).scalar_one()  
-            if not check_password_hash(user.password_hash, password):
+            if not check_password_hash(user.PasswordHash, password):
                 error = 'Incorrect password.'      
         except exc.NoResultFound:
             error = 'Incorrrect username.'
@@ -77,7 +77,7 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = db_session.execute(select(Administrator).filter_by(id=user_id)).scalar_one()
+        g.user = db_session.execute(select(Administrator).filter_by(AdminID=user_id)).scalar_one()
 
 @bp.route('/logout')
 def logout():
