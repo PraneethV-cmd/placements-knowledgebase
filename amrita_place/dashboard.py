@@ -19,32 +19,37 @@ def index():
     #         ' ORDER BY created DESC'
     #         ).fetchall()
     # return render_template('blog/index.html', posts=posts) # we are giving jinja the posts variable... i think
-    return render_template('blog/index.html', ) # we are giving jinja the posts variable... i think
+    return render_template('dashboard/index.html', ) # we are giving jinja the posts variable... i think
 
-
-@bp.route('/create', methods=('GET', 'POST'))
+@bp.route('/profile')
 @login_required
-def create():
-    if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
-        error = None
+def profile():
+    return render_template('dashboard/profile.html')
 
-        if not title:
-            error = 'Title is required.'
 
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO post (title, body, author_id)'
-                ' VALUES (?, ?, ?)',
-                (title, body, g.user['id'])                
-            )
-            db.commit()
-            return redirect(url_for('blog.index'))
-    return render_template('blog/create.html')
+# @bp.route('/create', methods=('GET', 'POST'))
+# @login_required
+# def create():
+#     if request.method == 'POST':
+#         title = request.form['title']
+#         body = request.form['body']
+#         error = None
+
+#         if not title:
+#             error = 'Title is required.'
+
+#         if error is not None:
+#             flash(error)
+#         else:
+#             db = get_db()
+#             db.execute(
+#                 'INSERT INTO post (title, body, author_id)'
+#                 ' VALUES (?, ?, ?)',
+#                 (title, body, g.user['id'])                
+#             )
+#             db.commit()
+#             return redirect(url_for('blog.index'))
+#     return render_template('blog/create.html')
 
 def get_post(id, check_author=True):
     post = get_db().execute(

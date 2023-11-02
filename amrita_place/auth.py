@@ -9,7 +9,7 @@ from sqlalchemy import select, exc
 
 from amrita_place.database import db_session
 
-from amrita_place.models import User
+from amrita_place.models import Administrator
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -18,6 +18,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        name = request.form['name']
         error = None
 
         if not username:
@@ -27,7 +28,7 @@ def register():
 
         if error is None:
             try:
-                new_user = Administrator(username, generate_password_hash(password))
+                new_user = Administrator(username, generate_password_hash(password), name)
                 db_session.add(new_user)
                 # db_session.execute(text(
                 #         "INSERT INTO user (username, password) VALUES (?, ?)"),
@@ -53,8 +54,8 @@ def login():
         #         'SELECT * FROM user WHERE username = ?', (username,)
         #         ).fetchone()
         try:
-            user = db_session.execute(select(User).filter_by(username=username)).scalar_one()  
-            if not check_password_hash(user.password_hash, password):
+            user = db_session.execute(select(Administrator).filter_by(username=username)).scalar_one()  
+            if not check_password_hash(user.PasswordHash, password):
                 error = 'Incorrect password.'      
         except exc.NoResultFound:
             error = 'Incorrrect username.'
@@ -62,7 +63,7 @@ def login():
 
         if error is None:
             session.clear()
-            session['user_id'] = user.id
+            session['user_id'] = user.AdminID
             return redirect(url_for('dashboard.profile'))
 
         flash(error)
@@ -76,7 +77,7 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = db_session.execute(select(User).filter_by(id=user_id)).scalar_one()
+        g.user = db_session.execute(select(Administrator).filter_by(AdminID=user_id)).scalar_one()
 
 @bp.route('/logout')
 def logout():
