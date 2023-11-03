@@ -85,7 +85,7 @@ class Company(Base):
 
 class Degree(Base):
     __tablename__ = 'degree'
-    programID = Column(Integer, primary_key=True)
+    programID = Column(String(50), primary_key=True, auto_increment=False)
     name = Column(String(100))
     branch = Column(String(100))
 
