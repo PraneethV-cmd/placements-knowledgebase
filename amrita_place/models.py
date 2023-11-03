@@ -45,7 +45,7 @@ from sqlalchemy.sql import func
 
 class Student(Base):
     __tablename__ = 'student'
-    roll_no = Column(Integer, primary_key=True)
+    roll_no = Column(String(50), primary_key=True)
     email_id = Column(String(100))
     name = Column(String(100))
     linkedIN_profile = Column(String(500))
@@ -66,7 +66,7 @@ class Student(Base):
 
 class PhoneNumber(Base):
     __tablename__ = 'phone_number'
-    rollNumber = Column(Integer, ForeignKey('student.roll_no'), primary_key=True)
+    rollNumber = Column(String(50), ForeignKey('student.roll_no'), primary_key=True)
     phoneNumber = Column(String(15))
 
     def __init__(self, rollNumber, phoneNumber):
@@ -100,7 +100,7 @@ class InterviewExperience(Base):
     positivePoints = Column(String(500))
     isJobSecured = Column(String(10))
     improvements = Column(String(500))
-    rollNumber = Column(Integer, ForeignKey('student.roll_no'))
+    rollNumber = Column(String(50), ForeignKey('student.roll_no'))
     companyID = Column(Integer, ForeignKey('company.CompanyID'))
 
     def __init__(self, interviewID, positivePoints, isJobSecured, improvements, rollNumber, companyID):
@@ -115,7 +115,7 @@ class Administrator(Base):
     __tablename__ = 'administrator'
     username = Column(String(50))
     AdminID = Column(Integer, primary_key=True)
-    PasswordHash = Column(String(128))
+    PasswordHash = Column(String(256))
     Name = Column(String(100))
 
     def __init__(self, username, PasswordHash, Name):
@@ -125,7 +125,7 @@ class Administrator(Base):
 
 class StudentDegreeHolder(Base):
     __tablename__ = 'student_degree_holder'
-    rollNumber = Column(Integer, ForeignKey('student.roll_no'), primary_key=True)
+    rollNumber = Column(String(50), ForeignKey('student.roll_no'), primary_key=True)
     ProgrammeID=Column(Integer, ForeignKey('degree.programID'))
 
     def __init__(self, rollNumber, ProgrammeID):
