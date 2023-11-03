@@ -151,6 +151,7 @@
     overflow: hidden;
     height: 70vh;
     margin-bottom: 5rem;
+    background-color: whitesmoke;
   }
   
   .header__container {
@@ -480,3 +481,7 @@
     }
   }
   
+  #chart {
+    max-width: 800px;
+    margin: 0 auto;
+}
