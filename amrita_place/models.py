@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey
-from sqlalchemy.orm  import relationship, Mapped, mapped_column
+from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey, Double, Boolean
+# from sqlalchemy.orm  import relationship, Mapped, mapped_column
 from amrita_place.database import Base
-from sqlalchemy.sql import func
+# from sqlalchemy.sql import func
 
 # Example Classes for creating tables, and PK, FK relations
 
@@ -50,7 +50,7 @@ class Student(Base):
     name = Column(String(100))
     linkedIN_profile = Column(String(500))
     salary = Column(Integer)
-    CGPA = Column(Integer)
+    CGPA = Column(Double(precision=2))
     companyID = Column(Integer, ForeignKey('company.CompanyID'))
     adminID = Column(Integer, ForeignKey('administrator.AdminID'))
 
@@ -87,7 +87,7 @@ class Degree(Base):
     __tablename__ = 'degree'
     programID = Column(String(50), primary_key=True)
     name = Column(String(100))
-    branch = Column(String(100))
+    branch = Column(String(3))
 
     def __init__(self, programID, name, branch):
         self.programID = programID
@@ -97,9 +97,9 @@ class Degree(Base):
 class InterviewExperience(Base):
     __tablename__ = 'interview_experience'
     interviewID = Column(Integer, primary_key=True)
-    positivePoints = Column(String(500))
-    isJobSecured = Column(String(10))
-    improvements = Column(String(500))
+    positivePoints = Column(Text)
+    isJobSecured = Column(Boolean)
+    improvements = Column(Text)
     rollNumber = Column(String(50), ForeignKey('student.roll_no'))
     companyID = Column(Integer, ForeignKey('company.CompanyID'))
 
