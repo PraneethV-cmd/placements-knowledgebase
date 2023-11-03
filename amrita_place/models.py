@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey
 from sqlalchemy.orm  import relationship, Mapped, mapped_column
-from amrita_place.database import Base
+from database import Base
 from sqlalchemy.sql import func
 
 # Example Classes for creating tables, and PK, FK relations
@@ -85,7 +85,7 @@ class Company(Base):
 
 class Degree(Base):
     __tablename__ = 'degree'
-    programID = Column(String(50), primary_key=True, auto_increment=False)
+    programID = Column(String(50), primary_key=True)
     name = Column(String(100))
     branch = Column(String(100))
 
@@ -126,7 +126,7 @@ class Administrator(Base):
 class StudentDegreeHolder(Base):
     __tablename__ = 'student_degree_holder'
     rollNumber = Column(String(50), ForeignKey('student.roll_no'), primary_key=True)
-    ProgrammeID=Column(Integer, ForeignKey('degree.programID'))
+    ProgrammeID=Column(String(50), ForeignKey('degree.programID'))
 
     def __init__(self, rollNumber, ProgrammeID):
         self.rollNumber = rollNumber
