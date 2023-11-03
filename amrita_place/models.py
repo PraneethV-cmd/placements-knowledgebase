@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey
 from sqlalchemy.orm  import relationship, Mapped, mapped_column
-from database import Base
+from amrita_place.database import Base
 from sqlalchemy.sql import func
 
 # Example Classes for creating tables, and PK, FK relations
