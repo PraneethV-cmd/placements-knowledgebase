@@ -3,8 +3,9 @@ name = "amrita-place"
 version = "1.0.0"
 dependencies = [
 "flask",
-"mariadb",
+"pymysql",
 "flask-sqlalchemy",
+"cryptography",
 ]
 
 [build-system]
