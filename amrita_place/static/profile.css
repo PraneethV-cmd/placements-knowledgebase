@@ -151,6 +151,7 @@
     overflow: hidden;
     height: 70vh;
     margin-bottom: 5rem;
+    background-color: whitesmoke;
   }
   
   .header__container {
@@ -167,7 +168,7 @@
   .categories {
     padding-top: 0px;
     background: var(--color-bg1);
-    height: 32rem;
+    height: 34rem;
   }
   
   .categories h1 {
@@ -481,7 +482,143 @@
   }
   
   
+    #chart {
+      max-width: 800px;
+      margin: 0 auto;
+  }
+  
+  /* Your existing CSS */
+  
+  .centered-header {
+      background: white;
+      border-radius: 50px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: row; /* Adjust the direction to be horizontal */
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 7rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .user-info {
+      /* flex: 1; Remove the flex property */
+      padding: 1rem; /* Add padding to create space around user info */
+      /* display: flex; Remove this line */
+      /* flex-direction: column; Remove this line */
+      align-items: flex-end; /* Align user info to the right */
+  }
+  
+  .profile-picture {
+      width: 440px;
+      height: 440px;
+      background-color: #b10f56;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* margin-right: 1rem; Remove this line */
+  }
+  
+  .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Make the image fill the div and maintain aspect ratio */
+      border-radius: 50%;
+  }
+  
+  .btn.edit-profile-btn {
+      background: #b10f56;
+      color: white;
+    border: 2px solid white;
+      border-radius: 1.5rem;
+      padding: 1rem 2rem;
+      text-align: center;
+      /* align-self: flex-end; Remove this line */
+  }
+  
+  .btn.edit-profile-btn:hover{
+    background: white;
+    color: #b10f56;
+    border: #b10f56 solid 2px;
+  }
+  
+  
+  .user-info {
+      padding: 1rem; /* Add padding to create space around user info */
+      margin: 0 ; /* Center user info */
+      text-align: center; /* Center the text inside user info */
+    
+    margin-top: auto;
+    margin-bottom: auto;
+    
+  }
+  
+  .user-info p{
+    padding: 1rem;
+  }
+  
+   .edit-profile-btn{
+    margin-top: 400px;
+  }
+  
+  .section-toggle {
+      text-align: center;
+      margin-top: 2rem;
+  }
+  
+  .section-toggle-button {
+    padding: 10px;
+      background: #b10f56;
+      color: var(--color-white);
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      margin: 0 1rem;
+  }
+  
+  .section-toggle-button.active {
+      background: var(--color-danger);
+  }
+  
+  .section {
+      margin-top: 2rem;
+      text-align: center;
+  }
+  
+  .section-toggle {
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+  }
+  
+  .section-toggle-button {
+      padding: 10px;
+      color: #b10f56; /* Text color for inactive buttons */
+      background: white; /* Background color for inactive buttons */
+      border: 2px solid #b10f56; /* Border for inactive buttons */
+      border-radius: 1.5rem;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      margin: 1rem;
+    transition: background 0.5s, border 0.5s;
+  }
+  
+  .section-toggle-button.active {
+      background: #b10f56; /* Background color for active button */
+      color: white; /* Text color for active button */
+      border: 2px solid white; /* Border for active button */
+  }
+  
   #chart {
-    max-width: 800px;
-    margin: 0 auto;
-}
+      font-family: "Montserrat", sans-serif;
+      width: 100%; /* Make the chart responsive to its container width */
+      height: 600px; /* Increase the height to make it taller */
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+  }
+  
